@@ -33,12 +33,12 @@ export default function WebsiteTableView({ websiteId }: { websiteId: string }) {
         <WorldMap websiteId={websiteId} />
         <CountriesTable {...tableProps} />
       </GridRow>
-      {isSharePage && (
+      {/* {isSharePage && (
         <GridRow columns="one-two">
           <EventsTable {...tableProps} />
           <EventsChart websiteId={websiteId} />
         </GridRow>
-      )}
+      )} */}
     </Grid>
   );
 }

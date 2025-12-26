@@ -13,7 +13,7 @@ export function Header() {
     >
       <a href='https://umami.is' target='_blank' rel='noopener'>
         <Row alignItems='center' gap>
-          <Icon size='lg'>
+          <Icon>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='currentColor'
@@ -27,9 +27,7 @@ export function Header() {
               />
             </svg>
           </Icon>
-          <Text size='lg' weight='bold'>
-            TinyStats
-          </Text>
+          <Text weight='bold'>TinyStats</Text>
         </Row>
       </a>
       <Row alignItems='center' gap>

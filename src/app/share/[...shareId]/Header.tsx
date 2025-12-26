@@ -27,7 +27,9 @@ export function Header() {
               />
             </svg>
           </Icon>
-          <Text>TinyStats</Text>
+          <Text size='lg' weight='bold'>
+            TinyStats
+          </Text>
         </Row>
       </a>
       <Row alignItems='center' gap>

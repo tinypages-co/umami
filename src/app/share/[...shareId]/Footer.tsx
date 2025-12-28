@@ -1,12 +1,12 @@
-import { CURRENT_VERSION, HOMEPAGE_URL } from '@/lib/constants';
-import styles from './Footer.module.css';
+import { Row, Text } from '@umami/react-zen'
+import { CURRENT_VERSION, HOMEPAGE_URL } from '@/lib/constants'
 
 export function Footer() {
   return (
-    <footer className={styles.footer}>
-        <b>TinyStats</b> {`v${CURRENT_VERSION}`}
-    </footer>
-  );
+    <Row as='footer' paddingY='6' justifyContent='flex-end'>
+      <a href={HOMEPAGE_URL} target='_blank'>
+        <Text weight='bold'>TinyStats</Text> {`v${CURRENT_VERSION}`}
+      </a>
+    </Row>
+  )
 }
-
-export default Footer;

@@ -3,12 +3,10 @@ import {
   ChartPie,
   Clock,
   Eye,
-  Flame,
   Sheet,
   Tag,
   User,
   UserPlus,
-  Video,
 } from '@/components/icons';
 import { Funnel, Gauge, Lightning, Magnet, Money, Network, Path, Target } from '@/components/svg';
 import { useMessages } from './useMessages';
@@ -101,18 +99,6 @@ export function useWebsiteNavItems(websiteId: string) {
           label: t(labels.retention),
           icon: <Magnet />,
           path: renderPath('/retention'),
-        },
-        {
-          id: 'replays',
-          label: t(labels.replays),
-          icon: <Video />,
-          path: renderPath('/replays'),
-        },
-        {
-          id: 'heatmaps',
-          label: t(labels.heatmaps),
-          icon: <Flame />,
-          path: renderPath('/heatmaps'),
         },
       ],
     },

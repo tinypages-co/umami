@@ -1,192 +1,119 @@
-import {
-  Grid,
-  Heading,
-  Row,
-  Tab,
-  TabList,
-  TabPanel,
-  Tabs,
-} from '@umami/react-zen'
-import { GridRow } from '@/components/common/GridRow'
-import { Panel } from '@/components/common/Panel'
-import { useMessages, useNavigation } from '@/components/hooks'
-import { EventsChart } from '@/components/metrics/EventsChart'
-import { MetricsTable } from '@/components/metrics/MetricsTable'
-import { WeeklyTraffic } from '@/components/metrics/WeeklyTraffic'
-import { WorldMap } from '@/components/metrics/WorldMap'
+import { Grid, Heading, Row, Tab, TabList, TabPanel, Tabs } from '@umami/react-zen';
+import { GridRow } from '@/components/common/GridRow';
+import { Panel } from '@/components/common/Panel';
+import { useMessages, useMobile } from '@/components/hooks';
+import { MetricsTable } from '@/components/metrics/MetricsTable';
+import { WeeklyTraffic } from '@/components/metrics/WeeklyTraffic';
+import { WorldMap } from '@/components/metrics/WorldMap';
 
 export function WebsitePanels({ websiteId }: { websiteId: string }) {
-  const { formatMessage, labels } = useMessages()
-  const { pathname } = useNavigation()
+  const { t, labels } = useMessages();
   const tableProps = {
     websiteId,
     limit: 10,
     allowDownload: false,
     showMore: true,
-    metric: formatMessage(labels.visitors),
-  }
-  const rowProps = { minHeight: '570px' }
-  const isSharePage = pathname.includes('/share/')
+    metric: t(labels.visitors),
+  };
+  const rowProps = { minHeight: '570px' };
+  const { isMobile } = useMobile();
 
   return (
-    <Grid gap='3'>
-      <GridRow layout='two' {...rowProps}>
+    <Grid gap="3">
+      <GridRow layout="two" {...rowProps}>
         <Panel>
-          <Heading size='2'>{formatMessage(labels.pages)}</Heading>
+          <Heading size="2xl">{t(labels.pages)}</Heading>
           <Tabs>
             <TabList>
-              <Tab id='path'>{formatMessage(labels.path)}</Tab>
-              <Tab id='entry'>{formatMessage(labels.entry)}</Tab>
-              <Tab id='exit'>{formatMessage(labels.exit)}</Tab>
+              <Tab id="path">{t(labels.path)}</Tab>
+              <Tab id="fullPath">{t(labels.url)}</Tab>
+              <Tab id="entry">{t(labels.entry)}</Tab>
+              <Tab id="exit">{t(labels.exit)}</Tab>
             </TabList>
-            <TabPanel id='path'>
-              <MetricsTable
-                type='path'
-                title={formatMessage(labels.path)}
-                {...tableProps}
-              />
+            <TabPanel id="path">
+              <MetricsTable type="path" title={t(labels.path)} {...tableProps} />
             </TabPanel>
-            <TabPanel id='entry'>
-              <MetricsTable
-                type='entry'
-                title={formatMessage(labels.path)}
-                {...tableProps}
-              />
+            <TabPanel id="fullPath">
+              <MetricsTable type="fullPath" title={t(labels.url)} {...tableProps} />
             </TabPanel>
-            <TabPanel id='exit'>
-              <MetricsTable
-                type='exit'
-                title={formatMessage(labels.path)}
-                {...tableProps}
-              />
+            <TabPanel id="entry">
+              <MetricsTable type="entry" title={t(labels.path)} {...tableProps} />
+            </TabPanel>
+            <TabPanel id="exit">
+              <MetricsTable type="exit" title={t(labels.path)} {...tableProps} />
             </TabPanel>
           </Tabs>
         </Panel>
         <Panel>
-          <Heading size='2'>{formatMessage(labels.sources)}</Heading>
+          <Heading size="2xl">{t(labels.sources)}</Heading>
           <Tabs>
             <TabList>
-              <Tab id='referrer'>{formatMessage(labels.referrers)}</Tab>
-              <Tab id='channel'>{formatMessage(labels.channels)}</Tab>
+              <Tab id="referrer">{t(labels.referrers)}</Tab>
+              <Tab id="channel">{t(labels.channels)}</Tab>
             </TabList>
-            <TabPanel id='referrer'>
-              <MetricsTable
-                type='referrer'
-                title={formatMessage(labels.referrer)}
-                {...tableProps}
-              />
+            <TabPanel id="referrer">
+              <MetricsTable type="referrer" title={t(labels.referrer)} {...tableProps} />
             </TabPanel>
-            <TabPanel id='channel'>
-              <MetricsTable
-                type='channel'
-                title={formatMessage(labels.channel)}
-                {...tableProps}
-              />
+            <TabPanel id="channel">
+              <MetricsTable type="channel" title={t(labels.channel)} {...tableProps} />
             </TabPanel>
           </Tabs>
         </Panel>
       </GridRow>
 
-      <GridRow layout='two' {...rowProps}>
+      <GridRow layout="two" {...rowProps}>
         <Panel>
-          <Heading size='2'>{formatMessage(labels.environment)}</Heading>
+          <Heading size="2xl">{t(labels.environment)}</Heading>
           <Tabs>
             <TabList>
-              <Tab id='browser'>{formatMessage(labels.browsers)}</Tab>
-              <Tab id='os'>{formatMessage(labels.os)}</Tab>
-              <Tab id='device'>{formatMessage(labels.devices)}</Tab>
+              <Tab id="browser">{t(labels.browsers)}</Tab>
+              <Tab id="os">{t(labels.os)}</Tab>
+              <Tab id="device">{t(labels.devices)}</Tab>
             </TabList>
-            <TabPanel id='browser'>
-              <MetricsTable
-                type='browser'
-                title={formatMessage(labels.browser)}
-                {...tableProps}
-              />
+            <TabPanel id="browser">
+              <MetricsTable type="browser" title={t(labels.browser)} {...tableProps} />
             </TabPanel>
-            <TabPanel id='os'>
-              <MetricsTable
-                type='os'
-                title={formatMessage(labels.os)}
-                {...tableProps}
-              />
+            <TabPanel id="os">
+              <MetricsTable type="os" title={t(labels.os)} {...tableProps} />
             </TabPanel>
-            <TabPanel id='device'>
-              <MetricsTable
-                type='device'
-                title={formatMessage(labels.device)}
-                {...tableProps}
-              />
+            <TabPanel id="device">
+              <MetricsTable type="device" title={t(labels.device)} {...tableProps} />
             </TabPanel>
           </Tabs>
         </Panel>
 
         <Panel>
-          <Heading size='2'>{formatMessage(labels.location)}</Heading>
+          <Heading size="2xl">{t(labels.location)}</Heading>
           <Tabs>
             <TabList>
-              <Tab id='country'>{formatMessage(labels.countries)}</Tab>
-              <Tab id='region'>{formatMessage(labels.regions)}</Tab>
-              <Tab id='city'>{formatMessage(labels.cities)}</Tab>
+              <Tab id="country">{t(labels.countries)}</Tab>
+              <Tab id="region">{t(labels.regions)}</Tab>
+              <Tab id="city">{t(labels.cities)}</Tab>
             </TabList>
-            <TabPanel id='country'>
-              <MetricsTable
-                type='country'
-                title={formatMessage(labels.country)}
-                {...tableProps}
-              />
+            <TabPanel id="country">
+              <MetricsTable type="country" title={t(labels.country)} {...tableProps} />
             </TabPanel>
-            <TabPanel id='region'>
-              <MetricsTable
-                type='region'
-                title={formatMessage(labels.region)}
-                {...tableProps}
-              />
+            <TabPanel id="region">
+              <MetricsTable type="region" title={t(labels.region)} {...tableProps} />
             </TabPanel>
-            <TabPanel id='city'>
-              <MetricsTable
-                type='city'
-                title={formatMessage(labels.city)}
-                {...tableProps}
-              />
+            <TabPanel id="city">
+              <MetricsTable type="city" title={t(labels.city)} {...tableProps} />
             </TabPanel>
           </Tabs>
         </Panel>
       </GridRow>
 
-      <GridRow layout='two-one' {...rowProps}>
-        <Panel
-          gridColumn={{ xs: 'span 1', md: 'span 2' }}
-          paddingX='0'
-          paddingY='0'
-        >
+      <GridRow layout="two-one" {...rowProps}>
+        <Panel paddingX="0" paddingY="0" style={{ gridColumn: isMobile ? 'span 1' : 'span 2' }}>
           <WorldMap websiteId={websiteId} />
         </Panel>
 
         <Panel>
-          <Heading size='2'>{formatMessage(labels.traffic)}</Heading>
-          <Row border='bottom' marginBottom='4' />
+          <Heading size="2xl">{t(labels.traffic)}</Heading>
+          <Row border="bottom" marginBottom="4" />
           <WeeklyTraffic websiteId={websiteId} />
         </Panel>
       </GridRow>
-      {/* {isSharePage && (
-        <GridRow layout="two-one" {...rowProps}>
-          <Panel>
-            <Heading size="2">{formatMessage(labels.events)}</Heading>
-            <Row border="bottom" marginBottom="4" />
-            <MetricsTable
-              websiteId={websiteId}
-              type="event"
-              title={formatMessage(labels.event)}
-              metric={formatMessage(labels.count)}
-              limit={15}
-              filterLink={false}
-            />
-          </Panel>
-          <Panel gridColumn={{ xs: 'span 1', md: 'span 2' }}>
-            <EventsChart websiteId={websiteId} />
-          </Panel>
-        </GridRow>
-      )} */}
     </Grid>
-  )
+  );
 }

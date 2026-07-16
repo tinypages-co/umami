@@ -92,7 +92,7 @@ export async function POST(request: Request) {
         shareType: ENTITY_TYPE.website,
         name: website.name,
         slug: shareId,
-        parameters: { overview: true, events: true },
+        parameters: { overview: true, realtime: true, performance: true },
       })
     : null;
 

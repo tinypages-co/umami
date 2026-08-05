@@ -19,7 +19,7 @@ const TinyStatsLogo = () => (
 
 export function ShareBranding({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) {
   const share = useShare();
-  const logoDomain = share?.whiteLabel?.domainName || 'https://umami.is';
+  const logoDomain = share?.whiteLabel?.domainName || 'https://tinypages.co';
   const logoName = share?.whiteLabel?.displayName || 'TinyStats';
   const logoImage = share?.whiteLabel?.logoUrl;
   const height = LOGO_SIZE[size];

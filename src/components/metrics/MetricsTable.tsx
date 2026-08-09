@@ -1,10 +1,8 @@
 import { Grid, Row } from '@umami/react-zen';
 import { useEffect, useMemo } from 'react';
-import { IconLabel } from '@/components/common/IconLabel';
 import { LinkButton } from '@/components/common/LinkButton';
 import { LoadingPanel } from '@/components/common/LoadingPanel';
 import { useMessages, useNavigation, useWebsiteMetricsQuery } from '@/components/hooks';
-import { Maximize } from '@/components/icons';
 import { MetricLabel } from '@/components/metrics/MetricLabel';
 import { percentFilter } from '@/lib/filters';
 import { ListTable, type ListTableProps } from './ListTable';
@@ -79,11 +77,20 @@ export function MetricsTable({
       minHeight="400px"
     >
       <Grid padding="2">
-        {data && <ListTable {...props} data={filteredData} renderLabel={renderLabel} />}
+        {data && (
+          <ListTable
+            {...props}
+            data={filteredData}
+            renderLabel={renderLabel}
+            // TinyStats : le « 100 % » d'une liste à une seule ligne est du bruit
+            showPercentage={props.showPercentage ?? filteredData.length > 1}
+          />
+        )}
         {showMore && limit && (
           <Row justifyContent="center" alignItems="flex-end" paddingTop="4">
+            {/* TinyStats : lien discret, sans icône technique */}
             <LinkButton href={updateParams({ view: type })} variant="quiet">
-              <IconLabel icon={<Maximize />}>{t(labels.more)}</IconLabel>
+              {t(labels.more)}
             </LinkButton>
           </Row>
         )}

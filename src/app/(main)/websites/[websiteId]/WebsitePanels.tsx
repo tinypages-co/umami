@@ -18,11 +18,10 @@ export function WebsitePanels({ websiteId }: { websiteId: string }) {
     showMore: true,
     metric: t(labels.visitors),
   };
-  const rowProps = { minHeight: '570px' };
 
   return (
     <Grid gap="3">
-      <GridRow layout="two" {...rowProps}>
+      <GridRow layout="two">
         <Panel>
           <Heading size="2xl">{t(labels.pages)}</Heading>
           <MetricsTable type="path" title={t(labels.path)} {...tableProps} />
@@ -33,7 +32,7 @@ export function WebsitePanels({ websiteId }: { websiteId: string }) {
         </Panel>
       </GridRow>
 
-      <GridRow layout="two" {...rowProps}>
+      <GridRow layout="two">
         <Panel>
           <Heading size="2xl">{t(labels.browsers)}</Heading>
           <MetricsTable type="browser" title={t(labels.browser)} {...tableProps} />
@@ -44,7 +43,7 @@ export function WebsitePanels({ websiteId }: { websiteId: string }) {
         </Panel>
       </GridRow>
 
-      <GridRow layout="one" {...rowProps}>
+      <GridRow layout="one">
         <Panel paddingX="0" paddingY="0">
           <WorldMap websiteId={websiteId} />
         </Panel>

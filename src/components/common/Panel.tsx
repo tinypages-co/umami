@@ -58,7 +58,13 @@ export function Panel({
       position="relative"
       gap
       {...props}
-      style={{ ...style, ...(isFullscreen ? fullscreenStyles : { height, width }) }}
+      style={{
+        // TinyStats : cartes façon TinyPages — coins 12px, ombre très douce
+        borderRadius: 12,
+        boxShadow: '0 1px 2px rgba(38, 35, 33, 0.04)',
+        ...style,
+        ...(isFullscreen ? fullscreenStyles : { height, width }),
+      }}
     >
       {title && <Heading>{title}</Heading>}
       {description && <Text color="muted">{description}</Text>}

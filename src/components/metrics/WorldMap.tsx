@@ -71,8 +71,10 @@ export function WorldMap({ websiteId, data, ...props }: WorldMapProps) {
       data-for="world-map-tooltip"
       style={{ margin: 'auto 0', overflow: 'hidden' }}
     >
-      <ComposableMap projection="geoMercator">
-        <ZoomableGroup zoom={0.8} minZoom={0.7} center={[0, 40]}>
+      {/* TinyStats : viewBox large et bas (980×420) — la carte reste un bandeau
+          contenu au lieu d'un poster pleine page. */}
+      <ComposableMap projection="geoMercator" width={980} height={420} projectionConfig={{ scale: 120 }}>
+        <ZoomableGroup zoom={1} minZoom={0.7} center={[0, 30]}>
           <Geographies geography={`${process.env.basePath || ''}${MAP_FILE}`}>
             {({ geographies }) => {
               return geographies.map(geo => {

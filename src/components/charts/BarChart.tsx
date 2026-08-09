@@ -97,6 +97,8 @@ function BarChartComponent({
           },
           ticks: {
             color: colors.chart.text,
+            // TinyStats : jamais de graduations fractionnaires (« 0.5 visiteur »)
+            precision: 0,
             callback: renderYLabel || renderNumberLabels,
           },
         },

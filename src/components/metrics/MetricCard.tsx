@@ -57,7 +57,12 @@ export const MetricCard = ({
     >
       {showLabel && (
         <Row justifyContent="space-between" alignItems="flex-start">
-          <Text weight="bold" wrap="nowrap">
+          {/* TinyStats : label discret en petites capitales, le chiffre reste la vedette */}
+          <Text
+            color="muted"
+            wrap="nowrap"
+            style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.08em' }}
+          >
             {label}
           </Text>
           {tooltip && (

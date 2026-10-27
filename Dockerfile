@@ -1,4 +1,4 @@
-ARG NODE_IMAGE_VERSION="22-alpine"
+ARG NODE_IMAGE_VERSION="24.22.1-alpine"
 ARG PNPM_VERSION="10.15.1"
 # Keep in sync with the prisma/@prisma/* versions in package.json
 ARG PRISMA_VERSION="7.8.0"
